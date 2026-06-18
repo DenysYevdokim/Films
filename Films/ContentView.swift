@@ -2,21 +2,39 @@
 //  ContentView.swift
 //  Films
 //
-//  Created by PRO on 17.06.2026.
+//  Created by PRO on 18.06.2026.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            FilmListView()
+                .tabItem {
+                    Image(systemName: "film")
+                    Text("Films")
+                }
+            
+            SearchView()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
+                }
+            
+            AccountView()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("Account")
+                }
         }
-        
-        .padding()
+        .accentColor(.blue)
+        .background(Color.black)
     }
 }
 
