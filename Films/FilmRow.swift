@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct FilmRow: View {
+   
     let film: Film
 
     var body: some View {
@@ -16,7 +17,7 @@ struct FilmRow: View {
             Image(film.imageName)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 60, height: 90)
+                .frame(width: 76, height: 76)
                 .cornerRadius(8)
                 .clipped()
 

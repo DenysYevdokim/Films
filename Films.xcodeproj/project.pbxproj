@@ -9,15 +9,37 @@
 /* Begin PBXBuildFile section */
 		C63F70132FE5D1B5001C76C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63F700B2FE5D1B5001C76C9 /* ContentView.swift */; };
 		C63F70162FE5D1B5001C76C9 /* FilmsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63F700E2FE5D1B5001C76C9 /* FilmsApp.swift */; };
+		C67AC4352FE6B98800C4DF09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67AC42A2FE6B98800C4DF09 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C63F700B2FE5D1B5001C76C9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C63F700E2FE5D1B5001C76C9 /* FilmsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsApp.swift; sourceTree = "<group>"; };
+		C67AC42A2FE6B98800C4DF09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C68426AC2FE2BEB40015C2AD /* Films.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Films.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		C67AC4372FE6E98500C4DF09 /* Search */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Search;
+			sourceTree = "<group>";
+		};
+		C67AC44A2FE6F8CC00C4DF09 /* Account */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Account;
+			sourceTree = "<group>";
+		};
+		C67AC44F2FE6F8D200C4DF09 /* Home */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C67AC4522FE6F8D500C4DF09 /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C68426AE2FE2BEB40015C2AD /* Films */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Films;
@@ -41,6 +63,11 @@
 			children = (
 				C63F700E2FE5D1B5001C76C9 /* FilmsApp.swift */,
 				C63F700B2FE5D1B5001C76C9 /* ContentView.swift */,
+				C67AC42A2FE6B98800C4DF09 /* Assets.xcassets */,
+				C67AC4522FE6F8D500C4DF09 /* Models */,
+				C67AC44F2FE6F8D200C4DF09 /* Home */,
+				C67AC44A2FE6F8CC00C4DF09 /* Account */,
+				C67AC4372FE6E98500C4DF09 /* Search */,
 				C68426AE2FE2BEB40015C2AD /* Films */,
 				C68426AD2FE2BEB40015C2AD /* Products */,
 			);
@@ -70,6 +97,10 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				C67AC4372FE6E98500C4DF09 /* Search */,
+				C67AC44A2FE6F8CC00C4DF09 /* Account */,
+				C67AC44F2FE6F8D200C4DF09 /* Home */,
+				C67AC4522FE6F8D500C4DF09 /* Models */,
 				C68426AE2FE2BEB40015C2AD /* Films */,
 			);
 			name = Films;
@@ -118,6 +149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C67AC4352FE6B98800C4DF09 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,9 +1,10 @@
 //
-//  TabView.swift
+//  HomeView.swift
 //  Films
 //
-//  Created by PRO on 18.06.2026.
+//  Created by PRO on 20.06.2026.
 //
+
 
 import SwiftUI
 
@@ -21,20 +22,3 @@ struct HomeView: View {
     }
 }
 
-struct SearchView: View {
-    var body: some View {
-        ZStack{
-            (Color(red: 0.08, green: 0.10, blue: 0.17))
-            VStack {
-                Spacer()
-                Text("Search")
-                    .foregroundColor(.gray)
-                Spacer()
-                
-            }
-        }
-        
-        .background(Color(red: 0.08, green: 0.10, blue: 0.17))
-        
-    }
-}
