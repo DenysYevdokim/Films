@@ -10,8 +10,6 @@ import SwiftUI
 struct FilmListView: View {
    let filmsu = films
     
-    
-    
     var body: some View {
         NavigationStack {
             ZStack {
