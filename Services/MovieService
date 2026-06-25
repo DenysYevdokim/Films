@@ -1,0 +1,26 @@
+//
+//  Services.swift
+//  Films
+//
+//  Created by PRO on 24.06.2026.
+//
+
+
+
+import Foundation
+//
+//
+//final class MovieService {
+//
+//    private let network = NetworkManager()
+//
+//    func fetchPopularMovies() async throws -> [Movie] {
+//
+//        let response = try await network.request(
+//            MoviesResponse.self,
+//            endpoint: .popular
+//        )
+//
+//        return response.results
+//    }
+//}
