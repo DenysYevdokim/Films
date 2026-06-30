@@ -15,7 +15,7 @@ struct ContentView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
-            FilmListView()
+                FilmListView()
                 .tabItem {
                     Image(systemName: "film")
                     Text("Films")

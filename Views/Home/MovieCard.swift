@@ -9,43 +9,19 @@ import Foundation
 
 import SwiftUI
 
+
 struct MovieCard: View {
-    
-    let imageName: String
-    
-    var body: some View {
-        Image(imageName)
-            .resizable()
-            .scaledToFill()
-            .frame(width: 150, height: 220)
-            .clipShape(RoundedRectangle(cornerRadius: 18))
-    }
-    
-    
-}
-
-struct MovieCard1: View {
-    
-    let imageName: String
+    let movie: Movie
     
     var body: some View {
-        Image(imageName)
-            .resizable()
-            .scaledToFill()
-            .frame(width: 126, height: 190)
-            .clipShape(RoundedRectangle(cornerRadius: 18))
-    }
-}
-
-struct MovieCard2: View {
-    
-    let imageName: String
-    
-    var body: some View {
-        Image(imageName)
-            .resizable()
-            .scaledToFill()
-            .frame(width: 104, height: 152)
-            .clipShape(RoundedRectangle(cornerRadius: 18))
+        AsyncImage(url: URL(string: APIConstants.imageBaseURL + (movie.posterPath ?? ""))) { image in
+            image
+                .resizable()
+                .scaledToFill()
+        } placeholder: {
+            Color.gray.opacity(0.3)
+        }
+        .frame(width: 150, height: 220)
+        .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 }

@@ -4,30 +4,38 @@
 //
 //  Created by PRO on 18.06.2026.
 //
-
 import SwiftUI
 
 struct FilmListView: View {
-   let filmsu = films
-    
+
+    @StateObject private var viewModel = SearchViewModel()
+
     var body: some View {
         NavigationStack {
             ZStack {
-                (Color(red: 0.08, green: 0.10, blue: 0.17))
+                Color(red: 0.08, green: 0.10, blue: 0.17)
                     .ignoresSafeArea()
-                
-                List(films) { film in
-                    FilmRow(film: film)
-                        .listRowBackground(Color(red: 0.08, green: 0.10, blue: 0.17))
+
+                if viewModel.movies.isEmpty {
+                    ProgressView()
+                        .tint(.white)
+                } else {
+                    List(viewModel.movies) { film in
+                        FilmRow(film: film)
+                            .listRowBackground(Color(red: 0.08, green: 0.10, blue: 0.17))
+                    }
+                    .listStyle(.plain)
+                    .scrollContentBackground(.hidden)
                 }
-                .listStyle(.plain)
-                .scrollContentBackground(.hidden)
             }
             .navigationTitle("All films")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground((Color(red: 0.08, green: 0.10, blue: 0.17)), for: .navigationBar)
+            .toolbarBackground(Color(red: 0.08, green: 0.10, blue: 0.17), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
+        }
+        .task {
+            await viewModel.search(query: "popular")
         }
     }
 }

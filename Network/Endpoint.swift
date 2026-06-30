@@ -22,8 +22,8 @@ enum Endpoint {
         case .popular:
             return "/movie/popular"
 
-        case .search:
-            return "/search/movie"
+        case .search(let query):
+            return "/search/movie?query=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? query)"
 
         case .details(let id):
             return "/movie/\(id)"
