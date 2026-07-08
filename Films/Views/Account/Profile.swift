@@ -18,12 +18,12 @@ struct ProfileRow: View {
 
             VStack(alignment: .leading) {
 
-                Text("Miles Morales")
+                Text("Denys Yevdokymenko")
                     .foregroundColor(.white)
                     .font(.title3.bold())
 
-                Text("Film Hunter")
-                    .foregroundColor(.gray)
+//                Text("Film")
+//                    .foregroundColor(.gray)
             }
 
             Spacer()

@@ -21,7 +21,7 @@ struct MovieCard: View {
         } placeholder: {
             Color.gray.opacity(0.3)
         }
-        .frame(width: 150, height: 220)
         .clipShape(RoundedRectangle(cornerRadius: 18))
+        .clipped()
     }
 }

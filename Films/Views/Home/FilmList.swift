@@ -21,8 +21,12 @@ struct FilmListView: View {
                         .tint(.white)
                 } else {
                     List(viewModel.movies) { film in
-                        FilmRow(film: film)
-                            .listRowBackground(Color(red: 0.08, green: 0.10, blue: 0.17))
+                        NavigationLink {
+                            MovieDetailView(movie: film)
+                        } label: {
+                            FilmRow(film: film)
+                        }
+                        .listRowBackground(Color(red: 0.08, green: 0.10, blue: 0.17))
                     }
                     .listStyle(.plain)
                     .scrollContentBackground(.hidden)

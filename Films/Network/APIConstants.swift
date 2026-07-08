@@ -3,7 +3,8 @@
 //  Films
 //
 //  Created by PRO on 24.06.2026.
-//
+
+
 import Foundation
 
 enum APIConstants {
@@ -15,13 +16,12 @@ enum APIConstants {
  
     static var apiKey: String {
         
-        print(Bundle.main.infoDictionary ?? [:])
-           print("API key =", Bundle.main.object(forInfoDictionaryKey: "TMDB_API_KEY") ?? "nil")
-        
         
         guard let key = Bundle.main.object(
             forInfoDictionaryKey: "TMDB_API_KEY"
-        ) as? String else {
+    )
+                
+                as? String else {
             
             return ""
         }
