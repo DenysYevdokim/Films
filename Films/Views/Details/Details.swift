@@ -91,14 +91,14 @@ struct MovieDetailView: View {
     
     private var trailerSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Трейлер")
+            Text("Trailer")
                 .font(.title2.bold())
                 .foregroundStyle(.white)
 
             if let trailer = trailer,
                let url = URL(string: "https://www.youtube.com/watch?v=\(trailer.key)") {
                 Link(destination: url) {
-                    Label("Открыть в YouTube", systemImage: "play.circle.fill")
+                    Label("Open to YouTube", systemImage: "play.circle.fill")
                         .font(.headline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
