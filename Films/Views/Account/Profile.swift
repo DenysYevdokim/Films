@@ -22,8 +22,6 @@ struct ProfileRow: View {
                     .foregroundColor(.white)
                     .font(.title3.bold())
 
-//                Text("Film")
-//                    .foregroundColor(.gray)
             }
 
             Spacer()

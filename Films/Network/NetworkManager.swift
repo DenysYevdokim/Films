@@ -1,9 +1,9 @@
-//
+
 //  NetworkManager.swift
 //  Films
 //
 //  Created by PRO on 24.06.2026.
-//
+
 
 import Foundation
 
@@ -13,7 +13,6 @@ final class NetworkManager {
                                endpoint: Endpoint) async throws -> T {
         
         
-//        let urlString = "\(APIConstants.baseURL)\(endpoint.path)&api_key=\(APIConstants.apiKey)"
         let urlString = "\(APIConstants.baseURL)\(endpoint.path)\(endpoint.path.contains("?") ? "&" : "?")api_key=\(APIConstants.apiKey)"
         
         guard let url = URL(string: urlString) else {

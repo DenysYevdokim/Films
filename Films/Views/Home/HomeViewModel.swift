@@ -13,7 +13,8 @@ class HomeViewModel: ObservableObject {
     @Published var topMovies: [Movie] = []
     @Published var recommended: [Movie] = []
     @Published var newArrivals: [Movie] = []
-    
+    @Published var errorMessage: String?
+   
     private let service = MovieService()
     
     func loadMovies() async {
@@ -22,7 +23,9 @@ class HomeViewModel: ObservableObject {
             topMovies = Array(popular.prefix(5))
             recommended = Array(popular.dropFirst(5).prefix(5))
             newArrivals = Array(popular.dropFirst(10).prefix(6))
+            errorMessage = nil
         } catch {
+            errorMessage = error.localizedDescription
             print("Error: \(error)")
         }
     }

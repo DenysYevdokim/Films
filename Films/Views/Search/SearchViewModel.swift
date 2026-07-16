@@ -10,14 +10,15 @@ import Foundation
 import Combine
 
 final class SearchViewModel: ObservableObject {
-
+    
     @Published var searchText = ""
     @Published var movies: [Movie] = []
     @Published var errorMessage: String?
-
+    
+    
     private let service = MovieService()
     private var cancellables = Set<AnyCancellable>()
-
+    
     init() {
         $searchText
             .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
@@ -29,7 +30,7 @@ final class SearchViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-
+    
     @MainActor
     func search(query: String) async {
         guard !query.isEmpty else {
@@ -43,4 +44,17 @@ final class SearchViewModel: ObservableObject {
             errorMessage = error.localizedDescription
         }
     }
+    
+    
+    @MainActor
+    func loadAll() async {
+        do {
+            movies = try await service.fetchPopularMovies()
+           
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+    
+    
 }
