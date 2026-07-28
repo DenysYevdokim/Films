@@ -12,7 +12,7 @@ final class NetworkManager {
     func request<T: Decodable>(_ type: T.Type,
                                endpoint: Endpoint) async throws -> T {
         
-        
+       
         let urlString = "\(APIConstants.baseURL)\(endpoint.path)\(endpoint.path.contains("?") ? "&" : "?")api_key=\(APIConstants.apiKey)"
         
         guard let url = URL(string: urlString) else {

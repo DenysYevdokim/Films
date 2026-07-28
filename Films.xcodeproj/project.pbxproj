@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		C647708E2FFC4A070017F363 /* Films.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Films.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C608B8BB3009045B0098B6F3 /* Films.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Films.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C648BF992FEDA77E00D083F2 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		C6A1F0012FFA000000000001 /* Films/Config/Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Films/Config/Secrets.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -46,21 +45,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C647708F2FFE9BBF0017F363 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				C6A1F0012FFA000000000001 /* Films/Config/Secrets.xcconfig */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		C68426A32FE2BEB40015C2AD = {
 			isa = PBXGroup;
 			children = (
 				C648BF992FEDA77E00D083F2 /* .gitignore */,
 				C68426AE2FE2BEB40015C2AD /* Films */,
-				C647708E2FFC4A070017F363 /* Films.app */,
-				C647708F2FFE9BBF0017F363 /* Recovered References */,
+				C608B8BB3009045B0098B6F3 /* Films.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,7 +76,7 @@
 			packageProductDependencies = (
 			);
 			productName = Films;
-			productReference = C647708E2FFC4A070017F363 /* Films.app */;
+			productReference = C608B8BB3009045B0098B6F3 /* Films.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -267,7 +257,8 @@
 		};
 		C68426B82FE2BEB60015C2AD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6A1F0012FFA000000000001 /* Films/Config/Secrets.xcconfig */;
+			baseConfigurationReferenceAnchor = C68426AE2FE2BEB40015C2AD /* Films */;
+			baseConfigurationReferenceRelativePath = Config/Secrets.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -303,7 +294,8 @@
 		};
 		C68426B92FE2BEB60015C2AD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6A1F0012FFA000000000001 /* Films/Config/Secrets.xcconfig */;
+			baseConfigurationReferenceAnchor = C68426AE2FE2BEB40015C2AD /* Films */;
+			baseConfigurationReferenceRelativePath = Config/Secrets.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

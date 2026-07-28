@@ -10,80 +10,48 @@ import SwiftUI
 
 struct AccountView: View {
     var body: some View {
-        ZStack {
-            (Color(red: 0.08, green: 0.10, blue: 0.17))
-                .ignoresSafeArea()
-            
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    
-                    VStack(alignment: .leading, spacing: 25) {
-                        
-                        Text("Account")
-                            .font(.largeTitle)
-                            .bold()
-                            .foregroundColor(.white)
-                        
-                        
-                        ProfileRow()
-                        
-                        
-                        Divider()
-                            .background(.gray)
-                        
-                        Text("Account")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                        
-                        MenuRow(
-                            icon: "person.crop.circle.fill",
-                            color: .indigo,
-                            title: "Personal Data"
-                        )
-                        
-                        MenuRow(
-                            icon: "envelope.fill",
-                            color: .cyan,
-                            title: "Email & Payment"
-                        )
-                        
-                        MenuRow(
-                            icon: "trash.fill",
-                            color: .red,
-                            title: "Deactivate Account"
-                        )
-                        
-                        Divider()
-                            .background(.gray)
-                        
-                        Text("Privacy & Policy")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                        
-                        MenuRow(
-                            icon: "bell.fill",
-                            color: .indigo,
-                            title: "Notification"
-                        )
-                        
-                        MenuRow(
-                            icon: "ticket.fill",
-                            color: .cyan,
-                            title: "Your Ticket"
-                        )
-                        
-                        MenuRow(
-                            icon: "rectangle.portrait.and.arrow.right.fill",
-                            color: .red,
-                            title: "Logout"
-                        )
+        NavigationStack {
+            List {
+                Text("Account")
+                    .font(.largeTitle.bold())
+                    .foregroundColor(.white)
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(EdgeInsets())
+                    .padding(.bottom, 16)
+                
+                Section {
+                    NavigationLink(destination: Text("Профиль")) {
+                        Label("Profile", systemImage: "person.circle")
                     }
-                    .padding(20)
-                    //  .background(Color(red: 0.08, green: 0.10, blue: 0.17))
-                    .cornerRadius(24)
-                    .padding()
+                    NavigationLink(destination: Text("Настройки")) {
+                        Label("Settings", systemImage: "gearshape")
+                    }
+                    NavigationLink(destination: Text("Избранное")) {
+                        Label("Favorite", systemImage: "heart")
+                    }
                 }
+                
+                .listRowBackground(Color(red: 0.15, green: 0.17, blue: 0.24))
+                Section {
+                    Button(role: .destructive) {
+                        // тут позже добавим логику выхода
+                        print("Выход из аккаунта")
+                    } label: {
+                        Text("Sign out")
+                            .foregroundStyle(.red)
+                    }
+                }
+                
+                .listRowBackground(Color(red: 0.15, green: 0.17, blue: 0.24))
             }
+            
+            .scrollContentBackground(.hidden)
+            .background (Color(red: 0.08, green: 0.10, blue: 0.17))
+            .foregroundStyle(.white)
         }
+        
     }
+}
+#Preview {
+    AccountView()
 }
