@@ -9,6 +9,7 @@
 /* Begin PBXFileReference section */
 		C608B8BB3009045B0098B6F3 /* Films.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Films.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C648BF992FEDA77E00D083F2 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		C6CA6BBE301A8AAD00127EF1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -51,6 +52,7 @@
 				C648BF992FEDA77E00D083F2 /* .gitignore */,
 				C68426AE2FE2BEB40015C2AD /* Films */,
 				C608B8BB3009045B0098B6F3 /* Films.app */,
+				C6CA6BBE301A8AAD00127EF1 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};

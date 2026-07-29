@@ -50,7 +50,7 @@ final class SearchViewModel: ObservableObject {
     func loadAll() async {
         do {
             movies = try await service.fetchPopularMovies()
-           
+            
         } catch {
             errorMessage = error.localizedDescription
         }

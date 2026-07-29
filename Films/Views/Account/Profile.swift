@@ -1,9 +1,9 @@
-////
-////  Profile.swift
-////  Films
-////
-////  Created by PRO on 19.06.2026.
-////
+//
+//  Profile.swift
+//  Films
+//
+//  Created by PRO on 19.06.2026.
+//
 
 import SwiftUI
 

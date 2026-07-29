@@ -20,13 +20,13 @@ struct AccountView: View {
                     .padding(.bottom, 16)
                 
                 Section {
-                    NavigationLink(destination: Text("Профиль")) {
+                    NavigationLink(destination: Text("Profile")) {
                         Label("Profile", systemImage: "person.circle")
                     }
-                    NavigationLink(destination: Text("Настройки")) {
+                    NavigationLink(destination: Text("Settings")) {
                         Label("Settings", systemImage: "gearshape")
                     }
-                    NavigationLink(destination: Text("Избранное")) {
+                    NavigationLink(destination: Text("Favorite")) {
                         Label("Favorite", systemImage: "heart")
                     }
                 }
@@ -34,8 +34,7 @@ struct AccountView: View {
                 .listRowBackground(Color(red: 0.15, green: 0.17, blue: 0.24))
                 Section {
                     Button(role: .destructive) {
-                        // тут позже добавим логику выхода
-                        print("Выход из аккаунта")
+                        
                     } label: {
                         Text("Sign out")
                             .foregroundStyle(.red)
