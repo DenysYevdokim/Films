@@ -11,6 +11,16 @@ class ImageCache {
     static let shared = ImageCache()
     private init() {}
     private  let cache = NSCache<NSString, UIImage>()
+    private let fileManager = FileManager.default
+    
+    private lazy var cacheDirectory: URL = {
+        let paths = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)
+     return paths[0]
+    }()
+    
+    private func fileURL(for key: String) -> URL {
+        cacheDirectory.appendingPathComponent (key)
+    }
     
     func image(for key: String) -> UIImage? {
         cache.object(forKey: key as NSString)
