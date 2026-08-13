@@ -21,13 +21,23 @@ class ImageCache {
     private func fileURL(for key: String) -> URL {
         cacheDirectory.appendingPathComponent (key)
     }
+   
+    
     
     func image(for key: String) -> UIImage? {
-        cache.object(forKey: key as NSString)
+        if let cachedImage = cache.object(forKey: key as NSString) {
+            return cachedImage
+        }
+        if let diskImage = loadFromDisk(for: key) {
+            cache.setObject(diskImage, forKey: key as NSString)
+            return diskImage
+        }
+        return nil
     }
     
     func insert(_ image: UIImage, for key: String) {
         cache.setObject(image, forKey: key as NSString)
+        saveToDisk(image, for: key)
     }
     
     private func saveToDisk(_ image: UIImage, for key: String) {
