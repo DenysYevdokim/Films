@@ -13,11 +13,19 @@ class ImageLoader {
     private init() {}
     
     func loadImage(from url: URL) async throws -> UIImage {
+        let key = url.absoluteString
+        
+        if let cachedImage = ImageCache.shared.image(for: key) {
+            return cachedImage
+        }
+        
         let (data, _) = try await URLSession.shared.data(from: url)
         
         guard let image = UIImage(data: data) else {
             throw URLError(.cannotDecodeContentData)
         }
+        ImageCache.shared.insert(image, for: key)
+        
         return image
     }
 }
