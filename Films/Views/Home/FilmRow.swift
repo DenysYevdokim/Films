@@ -9,27 +9,21 @@ import SwiftUI
 struct FilmRow: View {
 
     let film: Movie
-
+    
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-
-            // Постер с TMDB
-            AsyncImage(url: posterURL) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                Color.gray.opacity(0.3)
-            }
-            .frame(width: 76, height: 76)
-            .cornerRadius(8)
-            .clipped()
-
+            
+            CachedAsyncImage(url: posterURL)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 76, height: 76)
+                .cornerRadius(8)
+                .clipped()
+            
             VStack(alignment: .leading, spacing: 4) {
                 Text(film.title)
                     .font(.headline)
                     .foregroundColor(.white)
-
+                
                 Text(film.overview)
                     .font(.subheadline)
                     .foregroundColor(.gray)

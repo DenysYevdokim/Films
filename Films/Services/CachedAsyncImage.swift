@@ -12,11 +12,23 @@ struct CachedAsyncImage: View {
     @State private var image: UIImage?
     
     var body: some View {
-        if let image {
-            Image(uiImage: image)
-                .resizable()
-        } else {
-            Color.gray.opacity(0.3)
+        Group {
+            if let image {
+                Image(uiImage: image)
+                    .resizable()
+            } else {
+                Color.gray.opacity(0.3)
+            }
+        }
+        .task {
+            guard let url else { return }
+            
+            do {
+                image = try await ImageLoader.shared.loadImage(from: url)
+            } catch {
+                print ("Не удалось загрузить картинку!")
+            }
+            
         }
     }
 }
