@@ -20,8 +20,9 @@ struct AccountView: View {
                     .padding(.bottom, 16)
                 
                 Section {
-                    NavigationLink(destination: Text("Profile")) {
+                    NavigationLink(destination:  ProfileRow()) {
                         Label("Profile", systemImage: "person.circle")
+                       
                     }
                     NavigationLink(destination: Text("Settings")) {
                         Label("Settings", systemImage: "gearshape")

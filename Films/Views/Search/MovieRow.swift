@@ -14,15 +14,11 @@ struct MovieRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
 
-            AsyncImage(url: posterURL) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                Color.gray.opacity(0.3)
-            }
-            .frame(width: 76, height: 76)
-            .clipShape(RoundedRectangle(cornerRadius: 16))
+            CachedAsyncImage(url: posterURL)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 76, height: 76)
+                .cornerRadius(8)
+                .clipped()
 
             VStack(alignment: .leading, spacing: 8) {
                 Text(movie.title)

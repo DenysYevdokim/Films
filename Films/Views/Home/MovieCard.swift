@@ -14,14 +14,9 @@ struct MovieCard: View {
     let movie: Movie
     
     var body: some View {
-        AsyncImage(url: URL(string: APIConstants.imageBaseURL + (movie.posterPath ?? ""))) { image in
-            image
-                .resizable()
-                .scaledToFill()
-        } placeholder: {
-            Color.gray.opacity(0.3)
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 18))
-        .clipped()
+        CachedAsyncImage(url: URL(string: APIConstants.imageBaseURL + (movie.posterPath ?? "")))
+            .aspectRatio(contentMode: .fill)
+            .clipShape(RoundedRectangle(cornerRadius: 18))
+            .clipped()
     }
 }
