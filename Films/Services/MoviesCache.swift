@@ -3,7 +3,7 @@
 //  Films
 //
 //  Created by PRO on 25.08.2026.
-//
+
 
 import Foundation
 
@@ -18,7 +18,7 @@ class MoviesCache {
         return paths[0].appendingPathComponent("movies_cache.json")
     }()
     
-   
+    
     func save(_ movies: [Movie]) {
         do {
             let data = try JSONEncoder().encode(movies)
@@ -27,5 +27,20 @@ class MoviesCache {
             print("Не удалось сохранить фильмы: \(error)")
         }
     }
+    
+    func load() -> [Movie]? {
+        guard fileManager.fileExists(atPath: fileURL.path) else { return nil }
+        do {
+            let data = try Data(contentsOf: fileURL)
+            let movies = try JSONDecoder().decode([Movie].self,from: data)
+            return movies
+        } catch {
+            print ("Не удалось раскодировать файл: \(error)")
+            return nil
+        }
+    }
+    
+    
+    
     
 }
