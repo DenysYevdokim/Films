@@ -20,6 +20,7 @@ class HomeViewModel: ObservableObject {
     func loadMovies() async {
         do {
             let popular = try await service.fetchPopularMovies()
+            MoviesCache.shared.save(popular)
             topMovies = Array(popular.prefix(5))
             recommended = Array(popular.dropFirst(5).prefix(5))
             newArrivals = Array(popular.dropFirst(10).prefix(6))
