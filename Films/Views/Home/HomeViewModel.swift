@@ -26,7 +26,14 @@ class HomeViewModel: ObservableObject {
             newArrivals = Array(popular.dropFirst(10).prefix(6))
             errorMessage = nil
         } catch {
-            errorMessage = error.localizedDescription
+            if let cachedMovies = MoviesCache.shared.load() {
+                topMovies = Array(cachedMovies.prefix(5))
+                recommended = Array(cachedMovies.dropFirst(5).prefix(5))
+                newArrivals = Array(cachedMovies.dropFirst(10).prefix(6))
+                errorMessage = "Показаны сохранённые данные"
+            } else {
+                errorMessage = error.localizedDescription
+            }
             print("Error: \(error)")
         }
     }
