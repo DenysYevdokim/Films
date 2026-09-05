@@ -1,6 +1,7 @@
 # Films App
 
 Додаток для перегляду популярних фільмів, пошуку та деталей із використанням TMDB API.
+<img width="400" height="819" alt="ScreenRecording_09-05-2026 13-22-10_1" src="https://github.com/user-attachments/assets/6cc040b3-b499-491c-8d63-145646b57665" />
 
 ## Можливості
 
