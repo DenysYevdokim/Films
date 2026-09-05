@@ -1,29 +1,28 @@
-# Films App
 
-Додаток для перегляду популярних фільмів, пошуку та деталей із використанням TMDB API.
+# Films App
+An app for browsing popular movies and viewing their details, ratings, and trailers using the TMDB API.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6cc040b3-b499-491c-8d63-145646b57665" width="250">
 </p>
 
-## Можливості
+## Features
 
-- Перегляд популярних фільмів
-- Пошук фільмів за назвою
-- Перегляд деталей та трейлерів
-- Екран акаунту
+- Search movies by title
+- View movie details and trailers
+- Local caching for faster loading and offline access
+- Account screen
 
-## Технології
+## Technologies
 
 - SwiftUI
 - Swift Concurrency (async/await)
-- MVVM архітектура
+- MVVM architecture
+- Custom caching layer for images and movie data
 
-## Як запустити проект
+## How to run the project
 
-### 1. Клонувати репозиторій
-
-### 2. Налаштувати API ключ 
-
-1. Зберегти  файл Secrets.xcconfig з ключем надісланний окремо
-2. Відкрити папку проєкт Films і вставити збереженний файл Secrets.xcconfig в папку Config .
-3. Відкрити проект `Films.xcodeproj` в Xcode і запусти.
+1. Clone the repository
+2. Set up the API key
+   1. Save the `Secrets.xcconfig` file with the key (sent separately)
+   2. Open the `Films` project folder and place the saved `Secrets.xcconfig` file into the `Config` folder
+   3. Open `Films.xcodeproj` in Xcode and run the project
