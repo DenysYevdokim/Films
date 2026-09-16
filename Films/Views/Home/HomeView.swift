@@ -23,6 +23,12 @@ struct HomeView: View {
                         .font(.caption.bold())
                         .foregroundColor(.green)
                     
+                    if let errorMessage = viewModel.errorMessage {
+                        Text(errorMessage)
+                            .font(.caption)
+                            .foregroundColor(.orange)
+                    }
+                    
                     sectionTitle("Top Movies")
                     horizontalRow(viewModel.topMovies)
                     
