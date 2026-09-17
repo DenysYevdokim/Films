@@ -8,7 +8,7 @@ import SwiftUI
 
 struct FilmListView: View {
     
-    @StateObject private var viewModel = SearchViewModel()
+    @StateObject private var viewModel = FilmListViewModel()
     
     var body: some View {
         NavigationStack {
@@ -53,11 +53,11 @@ struct FilmListView: View {
                 .toolbarBackground(Color(red: 0.08, green: 0.10, blue: 0.17), for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
                 .toolbarColorScheme(.dark, for: .navigationBar)
-            }
-            .task {
-                await viewModel.loadAll()
-            }
         }
+        .task {
+            await viewModel.loadAll()
+        }
+    }
     }
 
     #Preview {
