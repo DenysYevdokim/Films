@@ -15,6 +15,7 @@ enum Endpoint {
     case search(String)
     case details(Int)
     case videos(Int)
+    case credits(Int)
     
     var path: String {
         
@@ -31,6 +32,10 @@ enum Endpoint {
             
         case .videos(let id):
             return "/movie/\(id)/videos"
+        
+        case .credits(let id):
+            return "/movie/\(id)/credits"
+            
         }
     }
 }

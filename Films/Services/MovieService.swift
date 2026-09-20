@@ -44,5 +44,11 @@ final class MovieService {
             ?? response.results.first { $0.site == "YouTube" }
     }
     
+    func fetchCredits(id: Int) async throws -> CreditsResponse {
+        return try await network.request(
+            CreditsResponse.self,
+            endpoint: .credits(id)
+        )
+    }
     
 }
