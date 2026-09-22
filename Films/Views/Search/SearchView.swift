@@ -10,43 +10,43 @@ import Foundation
 import SwiftUI
 
 struct SearchView: View {
-
+    
     @StateObject private var viewModel = SearchViewModel()
-
+    
     var body: some View {
-
+        
         NavigationStack {
             ZStack {
-
+                
                 Color(red: 0.08, green: 0.10, blue: 0.17)
                     .ignoresSafeArea()
-
+                
                 VStack(alignment: .leading, spacing: 24) {
-
+                    
                     Text("Search")
                         .font(.largeTitle)
                         .bold()
                         .foregroundStyle(.white)
-
+                    
                     SearchBar(text: $viewModel.searchText)
-
+                    
                     ScrollView {
-
+                        
                         LazyVStack(spacing: 20) {
-
+                            
                             ForEach(viewModel.movies) { movie in
-
+                                
                                 NavigationLink {
                                     MovieDetailView(movie: movie)
                                 } label: {
                                     MovieRow(movie: movie)
                                 }
                                 .buttonStyle(.plain)
-
+                                
                             }
                         }
                     }
-
+                    
                     Spacer()
                 }
                 .padding(.horizontal, 24)

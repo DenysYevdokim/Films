@@ -15,11 +15,11 @@ struct SearchBar: View {
     var body: some View {
 
         HStack(spacing: 12) {
-
+            
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(.gray)
-
-            TextField("Search movie", text: $text)
+            
+            TextField("", text: $text, prompt: Text("Search movie").foregroundStyle(.gray.opacity(0.6)))
                 .foregroundStyle(.white)
         }
         .padding()

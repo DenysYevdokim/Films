@@ -8,6 +8,9 @@ struct MovieDetailView: View {
     
     @State private var trailer: Video?
     @State private var isLoadingTrailer = true
+    @State private var cast: [Cast] = []
+    @State private var director: String?
+    
     
     private let service = MovieService()
     
@@ -15,6 +18,11 @@ struct MovieDetailView: View {
     
     private var posterURL: URL? {
         guard let path = movie.posterPath else { return nil }
+        return URL(string: "\(APIConstants.imageBaseURL)\(path)")
+    }
+    
+    private func profileURL(for path: String?) -> URL? {
+        guard let path else { return nil }
         return URL(string: "\(APIConstants.imageBaseURL)\(path)")
     }
     
@@ -42,6 +50,9 @@ struct MovieDetailView: View {
                     }
                     
                     trailerSection
+                    
+                    castSection
+                    
                 }
                 .padding(.horizontal, 24)
                 .padding(.bottom, 32)
@@ -56,6 +67,11 @@ struct MovieDetailView: View {
         .task {
             trailer = try? await service.fetchTrailer(id: movie.id)
             isLoadingTrailer = false
+            
+            if let credits = try? await service.fetchCredits(id: movie.id) {
+                cast = credits.cast
+                director = credits.crew.first { $0.job == "Director" }?.name
+            }
         }
     }
     
@@ -75,7 +91,7 @@ struct MovieDetailView: View {
         }
         .frame(maxWidth: .infinity)
         .frame(height: 440)
-      
+        
     }
     
     private var rating: some View {
@@ -94,7 +110,7 @@ struct MovieDetailView: View {
             Text("Trailer")
                 .font(.title2.bold())
                 .foregroundStyle(.white)
-
+            
             if let trailer = trailer,
                let url = URL(string: "https://www.youtube.com/watch?v=\(trailer.key)") {
                 Link(destination: url) {
@@ -113,5 +129,40 @@ struct MovieDetailView: View {
         }
     }
     
+    
+    private var castSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            if let director {
+                Text("Director: \(director)")
+                    .font(.headline)
+                    .foregroundStyle(.white)
+            }
+            
+            if !cast.isEmpty {
+                Text("Cast")
+                    .font(.title2.bold())
+                    .foregroundStyle(.white)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 16) {
+                        ForEach(cast.prefix(10)) { actor in
+                            VStack {
+                                CachedAsyncImage(url: profileURL(for: actor.profilePath))
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 70, height: 70)
+                                    .clipShape(Circle())
+                                
+                                Text(actor.name)
+                                    .font(.caption)
+                                    .foregroundStyle(.white)
+                                    .lineLimit(1)
+                                    .frame(width: 70)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     
 }
