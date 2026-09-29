@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    
+    @StateObject private var favoritesViewModel = FavoritesViewModel()
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -64,7 +64,7 @@ struct HomeView: View {
             HStack(spacing: 16) {
                 ForEach(movies) { movie in
                     NavigationLink {
-                        MovieDetailView(movie: movie)
+                        MovieDetailView(movie: movie, viewModel: favoritesViewModel)
                     } label: {
                         VStack(alignment: .leading, spacing: 4) {
                             MovieCard(movie: movie)
@@ -96,7 +96,7 @@ struct HomeView: View {
         LazyVGrid(columns: columns, spacing: 16) {
             ForEach(movies) { movie in
                 NavigationLink {
-                    MovieDetailView(movie: movie)
+                    MovieDetailView(movie: movie, viewModel: favoritesViewModel)
                 } label: {
                     VStack(alignment: .leading, spacing: 4) {
                         MovieCard(movie: movie)

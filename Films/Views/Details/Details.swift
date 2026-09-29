@@ -4,17 +4,21 @@ import SwiftUI
 
 struct MovieDetailView: View {
     let movie: Movie
-    
+    let viewModel: FavoritesViewModel
     
     @State private var trailer: Video?
     @State private var isLoadingTrailer = true
     @State private var cast: [Cast] = []
     @State private var director: String?
-    
+    @State private var isFavorite: Bool
     
     private let service = MovieService()
     
-    
+    init(movie: Movie, viewModel: FavoritesViewModel) {
+        self.movie = movie
+        self.viewModel = viewModel
+        _isFavorite = State(initialValue: viewModel.isFavorite(movie))
+    }
     
     private var posterURL: URL? {
         guard let path = movie.posterPath else { return nil }
@@ -29,48 +33,65 @@ struct MovieDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
+                
                 poster
                 
-                VStack(alignment: .leading, spacing: 16) {
+                HStack {
                     Text(movie.title)
                         .font(.largeTitle.bold())
                         .foregroundStyle(.white)
                     
-                    rating
+                    Spacer()
                     
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Description")
-                            .font(.title2.bold())
-                            .foregroundStyle(.white)
-                        
-                        Text(movie.overview.isEmpty ? "No description available." : movie.overview)
-                            .font(.body)
-                            .foregroundStyle(.gray)
-                            .lineSpacing(4)
+                    Button {
+                        isFavorite.toggle()
+                        if isFavorite {
+                            viewModel.add(movie)
+                        } else {
+                            viewModel.remove(movie)
+                        }
+                    } label: {
+                        Image(systemName: isFavorite ? "heart.fill" : "heart")
+                            .foregroundStyle(.red)
+                            .font(.title2)
                     }
-                    
-                    trailerSection
-                    
-                    castSection
-                    
                 }
-                .padding(.horizontal, 24)
-                .padding(.bottom, 32)
-            }
-        }
-        .background(Color(red: 0.08, green: 0.10, blue: 0.17))
-        .navigationTitle(movie.title)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(Color(red: 0.08, green: 0.10, blue: 0.17), for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
-        .task {
-            trailer = try? await service.fetchTrailer(id: movie.id)
-            isLoadingTrailer = false
             
-            if let credits = try? await service.fetchCredits(id: movie.id) {
-                cast = credits.cast
-                director = credits.crew.first { $0.job == "Director" }?.name
+                rating
+                
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Description")
+                        .font(.title2.bold())
+                        .foregroundStyle(.white)
+                    
+                    Text(movie.overview.isEmpty ? "No description available." : movie.overview)
+                        .font(.body)
+                        .foregroundStyle(.gray)
+                        .lineSpacing(4)
+                }
+                
+                trailerSection
+                
+                castSection
+                
+            }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 32)
+            
+            .background(Color(red: 0.08, green: 0.10, blue: 0.17))
+            .navigationTitle(movie.title)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(Color(red: 0.08, green: 0.10, blue: 0.17), for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .task {
+                trailer = try? await service.fetchTrailer(id: movie.id)
+                isLoadingTrailer = false
+                
+                if let credits = try? await service.fetchCredits(id: movie.id) {
+                    cast = credits.cast
+                    director = credits.crew.first { $0.job == "Director" }?.name
+                }
             }
         }
     }

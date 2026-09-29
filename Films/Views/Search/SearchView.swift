@@ -12,7 +12,7 @@ import SwiftUI
 struct SearchView: View {
     
     @StateObject private var viewModel = SearchViewModel()
-    
+    @StateObject private var favoritesViewModel = FavoritesViewModel()
     var body: some View {
         
         NavigationStack {
@@ -37,7 +37,7 @@ struct SearchView: View {
                             ForEach(viewModel.movies) { movie in
                                 
                                 NavigationLink {
-                                    MovieDetailView(movie: movie)
+                                    MovieDetailView(movie: movie, viewModel: favoritesViewModel)
                                 } label: {
                                     MovieRow(movie: movie)
                                 }

@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct AccountView: View {
+    
+    @ObservedObject var viewModel: FavoritesViewModel
+    
     var body: some View {
         NavigationStack {
             List {
@@ -27,7 +30,7 @@ struct AccountView: View {
                     NavigationLink(destination: Text("Settings")) {
                         Label("Settings", systemImage: "gearshape")
                     }
-                    NavigationLink(destination: Text("Favorite")) {
+                    NavigationLink(destination: FavoritesListView(viewModel: viewModel)) {
                         Label("Favorite", systemImage: "heart")
                     }
                 }
@@ -52,6 +55,6 @@ struct AccountView: View {
         
     }
 }
-#Preview {
-    AccountView()
-}
+//#Preview {
+//    AccountView(viewModel)
+//}

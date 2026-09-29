@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var favoritesViewModel = FavoritesViewModel()
+    
     var body: some View {
         TabView {
             HomeView()
@@ -27,7 +29,7 @@ struct ContentView: View {
                     Text("Search")
                 }
             
-            AccountView()
+            AccountView(viewModel: favoritesViewModel)
                 .tabItem {
                     Image(systemName: "person")
                     Text("Account")
