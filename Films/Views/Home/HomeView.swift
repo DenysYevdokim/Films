@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    @StateObject private var favoritesViewModel = FavoritesViewModel()
+    let favoritesViewModel: FavoritesViewModel
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -120,6 +120,6 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+//    HomeView()
+//}
