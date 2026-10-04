@@ -9,7 +9,7 @@ import SwiftUI
 struct FilmListView: View {
     
     @StateObject private var viewModel = FilmListViewModel()
-    @StateObject private var favoritesViewModel = FavoritesViewModel()
+    let favoritesViewModel: FavoritesViewModel
     var body: some View {
         NavigationStack {
             ZStack {
@@ -60,7 +60,7 @@ struct FilmListView: View {
     }
     }
 
-    #Preview {
-        FilmListView()
-    }
+//    #Preview {
+//        FilmListView()
+//    }
 
